@@ -1,0 +1,215 @@
+<ChildBox@Label>:
+	font_size: 20
+
+<Title@Label>:
+	font_size: 50
+	
+<WeatherDaysInfo@Label>:
+	size_hint: 1, .25
+	font_size: 20
+	
+<WeatherDays@StackLayout>:
+	
+<CalendarDate@StackLayout>:
+	
+<CalendarDateDescription@Label>:
+	text_size: self.size
+	font_size: 18
+	halign: "left"
+    valign: "top"
+	padding_x: 10
+	color: (0,0,0,1)
+	
+	canvas.before:
+		Color:
+			rgba: 1,1,1,.7
+		
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+	
+<CalendarDateDate@Label>:
+	font_size: 20
+	color: (1,1,1,1)
+
+<TimeDisplay>:
+	time: timeLabel
+	date: dateLabel
+	pos_hint: {"x" : .55, "top": 0.90}
+	size_hint: .25, None
+	height: 50
+	spacing: 20
+	orientation: "vertical"
+	
+	Title:
+		id: timeLabel
+		font_size: 50
+	
+	ChildBox:
+		id: dateLabel
+		font_size: 30
+
+<WeatherWeek>:
+	orientation: "horizontal"
+	size_hint: 1,1
+	
+	canvas:
+
+		Color:
+			rgba: 1,1,1,1
+		
+		Line:
+			rectangle: (self.x, self.y, self.width, 0)
+			width: 1
+		
+		Line:
+			rectangle: (self.x, self.y + self.height, self.width, 0)
+			width: 2
+			
+<WeatherWeekDay>:
+	size_hint: 1, 1
+	size_hint: .25, 1
+	weatherTemp: weatherTempVal
+	weatherIcon: weatherIconVal
+	weatherDay: weatherDayVal
+	
+	WeatherDaysInfo:
+		id: weatherDayVal
+	AsyncImage:
+		id: weatherIconVal
+		size_hint: 1, .50
+		allow_stretch: True
+		keep_ratio: True
+	WeatherDaysInfo:
+		id: weatherTempVal
+			
+<WeatherToday>:
+	weatherTodayHigh: weatherTodayHighVal
+	weatherTodayLow: weatherTodayLowVal
+	weatherTodayIcon: weatherTodayIconVal
+	weatherTodayLocation: weatherTodayLocationVal
+	
+	orientation: "horizontal"
+	
+	AsyncImage:
+		id: weatherTodayIconVal
+		allow_stretch: True
+		keep_ratio: True
+		
+	StackLayout:
+		Label:
+			id: weatherTodayLocationVal
+			font_size: 24
+			size_hint: 1, None
+			height: 50
+		Label:
+			size_hint: .5, None
+			font_size: 20
+			height: 50
+			id: weatherTodayLowVal
+		Label:
+			size_hint: .5, None
+			font_size: 20
+			height: 50
+			id: weatherTodayHighVal
+
+<WeatherDisplay>:
+	height: 200
+	size_hint: 1, None
+	orientation: "vertical"
+
+<CalendarDisplay>:
+	spacing: 8
+	size_hint: 1, None
+	
+<CalendarEvent>:
+	calendarEventDate: calendarEventDateVal
+	calendarEventDesc: calendarEventDescVal
+	
+	size_hint: 1, None
+	height: 50
+	CalendarDateDate:
+		id: calendarEventDateVal
+		size_hint: .2, 1
+	CalendarDateDescription:
+		id: calendarEventDescVal
+		size_hint: .8, 1
+	
+<TravelDisplay>:
+	size_hint: 1, None
+	
+<TravelPoint>:
+	size_hint: 1, None
+	height: 60
+	
+	location: locationVal
+	time: timeVal
+	traffic: trafficVal
+	icon: iconVal
+	
+	Image:
+		pos_hint: {"x" : 0.03, "top": 0.97}
+		id: iconVal
+		size_hint: .3, 1
+	
+	StackLayout:
+		size_hint: .7, 1
+		Label:
+			id: locationVal
+			size_hint: 1, .7
+			font_size: 26
+		Label:
+			id: timeVal
+			size_hint: .5, .3
+			font_size: 16
+		Label:
+			id: trafficVal
+			color: (1,0,0,1)
+			size_hint: .5, .3
+			font_size: 16
+
+<SpotifyDisplay>:
+	trackArtist: trackArtistVal
+	trackName: trackNameVal
+	
+	size_hint: 1, None
+	spacing: 30
+	orientation: "horizontal"
+	valign: "top"
+	
+	Image:
+		size_hint: None, None
+		valign: "top"
+		text_size: self.size
+		height: 70
+		width: 70
+		source: "Icons/spotify.png"
+		pos_hint: {"x" : 0.03, "top": 0.97}
+		
+		canvas:
+			Line:
+				width: 2
+				ellipse: (self.x, self.y, self.width, self.height, 0, root.angleEnd)
+		
+	StackLayout:
+		size_hint: 1, None
+		
+		Label:
+			valign: "top"
+			size_hint: 1, None
+			text_size: self.size
+			height: 60
+			font_size: 20
+			id: trackNameVal
+		Label:
+			valign: "top"
+			size_hint: 1, None
+			text_size: self.size
+			height: 30
+			font_size: 16
+			id: trackArtistVal
+
+<LeftSideDisplay>:
+	pos_hint: {"x" : 0.05, "top": 0.95}
+	size_hint: .3, 1
+	spacing: root.height/20
