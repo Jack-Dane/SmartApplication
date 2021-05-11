@@ -82,6 +82,8 @@ apps connection to Google Calendar.
 If you only want certain APIs connected, leave the credentials out of the ApiData.json file, error handling of the 
 application will deal with this and not show any connected APIs which don't have the correct data in the JSON file. 
 
+Feel free to Fork and suggest improvements! 
+
 ## MIT License
 MIT License
 
